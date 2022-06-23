@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        alert("Мазе бот v1 на Вашите услуги");
+
+        let personalInfo;
+         let firstName = prompt("Име");
+         let lastName = prompt("Фамилия");
+         let age = prompt("Години");
+         let gender = prompt("Пол(м/ж)");
+
+         console.log(personalInfo);
+         
+         console.log(`Име ${firstName}`);
+         console.log(`Фамилия ${lastName}`);
+         console.log(`Години ${age}`);
+         console.log(`Пол ${gender}`);
+
+         if(gender=="м"&& age>=18){
+            console.log(`Здравейте г-н ${lastName}`)
+         } else if(gender=="ж"&& age>=18){
+            console.log(`Здравейте г-жо ${lastName}`)
+         }else if(gender=="м"&& age<18){
+            console.log(`Здрасти малкия, не пускаме дечица тука - бягай за бира`)
+         }else if(gender=="ж"&& age<18){
+            console.log(`Здрасти малката, не пускаме дечица тука - отивай да си играеш`)
+         }
+
+         alert(`Добре дошъл в мазето на баба, ${firstName} ${lastName}. 
+         Ти си на ${age} години`);
+
+         
+         let wine = "ябълково вино";
+         let meat = "пушено месо";
+         let marmalade = "сливов мармалад";     
+         let peppers = "мариновани чушки";
+         let piggyBank = "прасенце касичка";
+        
+         let qttyWine = 10;
+         let qttyMeat = 5;
+         let qttyMarmalade = 9;
+         let qttyPeppers = 4;
+         let qttyPiggyBank = 184.35;
+
+         let numWine = (`C7544_${qttyWine}`);
+         let numMeat = (`M7441_${qttyMeat}`);
+         let numMarmalade = (`S6491_${qttyMarmalade}`);
+         let numPeppers = (`P7485_${qttyPeppers}`);
+         let numPiggyBank = (`B6584_${qttyPiggyBank}`);
+
+         const idNumWine = {Product: wine, Quantity: qttyWine, New_Serial_Number: numWine}
+         const idNumMeat = {Product: meat, Quantity: qttyMeat, New_Serial_Number: numMeat}
+         const idNumMarmalade = {Product: marmalade, Quantity: qttyMarmalade, New_Serial_Number: numMarmalade}
+         const idNumPeppers = {Product: peppers, Quantity: qttyPeppers, New_Serial_Number: numPeppers}
+         const idNumPiggyBank = {Product: piggyBank, Quantity: qttyPiggyBank, New_Serial_Number: numPiggyBank}
+
+         alert(`Отчет за продуктите в мазето`);
+         console.table([idNumWine,idNumMeat,idNumMarmalade,idNumPeppers,idNumPiggyBank]);
+         
+         if(age>=18){
+         let donation =prompt("Желаете ли да наравите дарение?(да/не)");
+         console.log(`Отговор за дарение ${donation}`);
+         if(donation =='да'){
+            let donationAmount = prompt("Моля въведете сумата, която желаете да дарите:");
+            console.log(`Сума за дарение:${donationAmount}`);
+            newDonationAmount = (donationAmount + (donationAmount*0.2));
+            //не мога да го накарам да смята вярно, не знам къде греша :(
+
+            alert(`Сумата за дарение след данъци е ${newDonationAmount}`);
+         }else if(donation=="не"){
+            alert(`Жалко :(`);
+         }
+         
+        }else{
+
+        }
+
+
+    </script>
+
+
+</body>
+</html>
