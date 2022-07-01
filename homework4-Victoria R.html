@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const mandatoryQuestions = {
+            NUM_PANS : "Колко тигана има в кухнята?",
+            NUM_POTS : "Колко тенджери има в кухнята?",
+            CM_WIDE_KITCHEN : "Колко сантиметра е широка кухнята?",
+            CM_LONG_KITCHEN : "Колко сантиметра е дълга кухнята?",
+            CM_HIGH_KITCHEN : "Колко сантиметра е висока кухнята?",
+            NAME_CHEF : "Как се казва главният готвач?",
+            NUM_CHEFS : "Колко готвачи работят в кухнята?",
+            NUM_WAITERS: "Колко сервитьори работят в ресторанта?",
+            NAME_SAUCIER: "Как се казва отговорника на сосовете ?",
+            MIN_TEMP: "Каква е минималната температура в кухнята?",
+            MAX_TEMP: "Каква е максималната температура в кухнята?",
+            MONEY_IN_BANK: "Колко парички имате в банковата си сметка?",
+            DAILY_REVENUE: "Колко парички е дневният оборот на ресторанта ви?",
+            OPENING_HOUR: "В колко часа отваряте?",
+            CLOSING_HOUR: "В колко часа затваряте?"
+        };
+
+        const optionalQuestions = {
+            FRIDGE : "Разполагате ли с хладилник?",
+            GAS_STOVE : "Разполагате ли с газов котлон?",
+            CONVECTION_OVEN : "Разполагате ли с конвектомат?",
+            ELECTRIC_GRILL : "Разполагате ли с електрическа скара?",
+            ASPIRATOR : "Разполагате ли с аспиратор?"
+        };
+
+        let numPans;
+        let numPots;
+        let cmWideKitchen;
+        let cmLongKitchen;
+        let cmHighKitchen;
+        let nameChef;
+        let numChefs;
+        let numWaiters;
+        let nameSaucier;
+        let minTemp;
+        let maxTemp;
+        let moneyBank;
+        let dailyRevenue;
+        let openingHour;
+        let closingHour;
+
+        let fridge;
+        let gasStove;
+        let convectionOven;
+        let electricGrill;
+        let aspirator;
+        
+        while (mandatoryQuestions) {
+            numPans = prompt(mandatoryQuestions.NUM_PANS);
+            numPots = prompt(mandatoryQuestions.NUM_POTS);
+            cmWideKitchen = prompt(mandatoryQuestions.CM_WIDE_KITCHEN);
+            cmLongKitchen = prompt(mandatoryQuestions.CM_LONG_KITCHEN);
+            cmHighKitchen = prompt(mandatoryQuestions.CM_HIGH_KITCHEN);
+            nameChef = prompt(mandatoryQuestions.NAME_CHEF);
+            numChefs = prompt(mandatoryQuestions.NUM_CHEFS);
+            numWaiters = prompt(mandatoryQuestions.NUM_WAITERS);
+            nameSaucier = prompt(mandatoryQuestions.NAME_SAUCIER);
+            minTemp = prompt(mandatoryQuestions.MIN_TEMP);
+            maxTemp = prompt(mandatoryQuestions.MAX_TEMP);
+            moneyBank = prompt(mandatoryQuestions.MONEY_IN_BANK);
+            dailyRevenue = prompt(mandatoryQuestions.DAILY_REVENUE);
+            openingHour = prompt(mandatoryQuestions.OPENING_HOUR);
+            closingHour = prompt(mandatoryQuestions.CLOSING_HOUR);
+
+            if(numPans&&numPots&&cmWideKitchen&&cmLongKitchen&&cmHighKitchen&&nameChef&&numChefs
+            &&numWaiters&&nameSaucier&&minTemp&&maxTemp&&moneyBank&&dailyRevenue&&openingHour&&closingHour){
+                
+                break;
+            }
+            else{
+                alert(`Моля попълнете всички въпроси!`);
+                continue;
+            }
+        }
+
+       let optionalQuestionsAnswers = prompt(`Желаете ли да отговорите на допълнителни въпроси?`);
+        if(optionalQuestionsAnswers == "да") {
+
+            fridge = prompt(optionalQuestions.FRIDGE);
+            gasStove = prompt(optionalQuestions.GAS_STOVE);
+            convectionOven = prompt(optionalQuestions.CONVECTION_OVEN);
+            electricGrill = prompt(optionalQuestions.ELECTRIC_GRILL);
+            aspirator = prompt(optionalQuestions.ASPIRATOR);
+        }
+        else {
+            fride = "не";
+            gasStove = "не";
+            convectionOven = "не";
+            electricGrill = "не";
+            aspirator = "не";
+        }
+
+        let mealType = prompt(`Какво ястие бихте желали?(месно, вегетарианско, десерт)`);
+
+        if (mealType == "месно") {
+            let portionSize = prompt(`Моля изберете размер на порцията: малка порция (450 грама);
+             средна порция (750 грама); голяма порция (950 грама)`);
+             let meatPrep = prompt(`Моля изберете начин на приготвяне на месото: RARE; MEDIUM; WELL DONE`);
+
+             if(meatPrep == "RARE" || meatPrep == "rare"&&(gasStove == "не"
+             &&electricGrill=="да"&&minTemp>="36"&&maxTemp<="48"
+             &&aspirator=="да"&&portionSize=="малка порция"))
+             {
+                alert(`Прогитвя се :)`);
+            
+            } else if (meatPrep=="MEDIUM"||meatPrep=="rare"&&(convectionOven=="да"||numChefs=="5"
+            ||portionSize=="средна порция"||nameChef=="Иван")){
+                alert(`Приготвя се:)`);
+
+             } else if((meatPrep=="WELL DONE"|| meatPrep=="well done")&&
+             (closingHour=="22"||nameSaucier=="Петър"||nameSaucier=="Радо")&&
+             ((+cmLongKitchen*cmWideKitchen==45)||numPans=="3"||numPots=="2")){
+                alert(`Приготвя се :)`);
+
+             }else{
+                alert(`Няма да можем да го приготвим :(`);
+             }
+        }
+        else if(mealType == "вегетарианско"){
+            let typeVegetarian = prompt(`Какво вегетарианско ще желаете? (вегетарианско; веганско; пескатерианско)`);
+
+            if(typeVegetarian =="вегетарианско"&&
+            (convectionOven=="не"||electricGrill=="не"||aspirator=="не")){
+                alert(`Приготвя се :)`);
+            } else if(typeVegetarian == "веганско"&&fridge=="да"&&nameChef=="Манол"&&numChefs>="3"
+            &&numChefs<"11"&&numWaiters!="7"){
+                alert(`Приготвя се :)`);
+            } else if (typeVegetarian=="пескатерианско"&&(electricGrill=="да"||optionalQuestions=="да")
+            &&((+cmHighKitchen*cmLongKitchen*cmWideKitchen<13)||((+moneyBank+dailyRevenue)<158000))){
+                alert(`Приготвя се :)`);
+
+            }else{
+                alert(`Няма да можем да го приготвим :(`);
+            }
+
+        }else if(mealType =="десерт"){
+            let dessertType = prompt(`Какъв десерт ще желаете? (торта; сладолед)`);
+            let sugarAddiction = prompt(`Пристрастен ли сте към захарта?(да/не)`);
+
+            if(dessertType =="торта"&&
+            (fridge=="да"&&closingHour=="19"&&aspirator=="не"&&moneyBank>"15000"&&moneyBank<"50000")
+            ||(nameChef=="Румен")){
+                alert(`Приготвя се :)`);
+
+            }else if(dessertType=="сладолед"){
+                let icecreamFlavour = prompt(`Изберете вкус: ягода; банан; ванилия`);
+                if(dessertType == "сладолед"&&(sugarAddiction=="не"||icecreamFlavour=="ягода")){
+                    alert(`Приготвя се :)`);
+                }else {
+                    alert(`Няма да можем да го приготвим :(`);
+                }
+            }
+        } 
+        alert(`Благодаря ви, че хапнахте при нас.`);
+
+    </script>
+    
+</body>
+</html>
